@@ -13,7 +13,7 @@ class LogicGates {
 
     MSE(w1, w2, b) {
         let sum = 0
-        for (let i = 0; i < this._train_data.length; i++) {
+        for (let i = 0; i < this._training_data.length; i++) {
             const x1 = this._train_data[i].x1
             const x2 = this._train_data[i].x2
             const y = this.Sigmoid(x1 * w1 + x2 * w2 + b)

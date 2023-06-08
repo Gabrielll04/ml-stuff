@@ -1,4 +1,4 @@
-class Network {
+class Neuron {
     constructor() {
         this._Initialize()
     }
@@ -54,4 +54,4 @@ class Network {
     }
 }
 
-new Network()
+new Neuron()
