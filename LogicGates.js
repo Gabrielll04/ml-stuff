@@ -1,3 +1,5 @@
+// this code contains only non-linear logic gates!!!
+
 //AND
 const ANDinputs = [1, 1]
 const ANDthreshold  = 1

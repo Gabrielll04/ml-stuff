@@ -5,7 +5,7 @@ class Network {
 
 
     rand_float() {
-        return Math.random() * 10
+        return Math.random()
     }
 
     MSR(w, b) {
@@ -13,7 +13,7 @@ class Network {
         for (let i = 0; i < this.training_data.length; i++) {
             const x = this.training_data[i].x
             const expected = this.training_data[i].y
-            const y = (x * w + b)
+            const y = x * w + b 
             const d = y - expected
             sum += d * d
         }
@@ -34,22 +34,23 @@ class Network {
             {x: 8.0000, y: 16.0000},
         ]
 
-        this._w = this.rand_float()
-        this._b = this.rand_float()
+        let w = this.rand_float()*10
+        let b = this.rand_float()*5
 
         const eps = 1e-3
         const rate = 1e-3
 
-        console.log(this.MSR(this._w, this._b))
+        console.log(this.MSR(w, b))
         for  (let i = 0; i < 500; i++) {
-            const dcost = (this.MSR(this._w + eps, this._b) - this.MSR(this._w, this._b)) / eps //using finite difference
-            const bcost = (this.MSR(this._w, this._b + eps) - this.MSR(this._w, this._b)) / eps
-            this._w -= rate*dcost
-            this._b -= rate*bcost
-            console.log(`cost: ${Number(this.MSR(this._w, this._b)).toFixed(6)}, w = ${this._w}, b = ${this._b}`)
+            const c = this.MSR(w, b)
+            const dcost = (this.MSR(w + eps, b) - c)/eps //using finite difference
+            const bcost = (this.MSR(w, b + eps) - c)/eps
+            w -= rate*dcost
+            b -= rate*bcost
+            console.log(`cost: ${this.MSR(w, b)}, w = ${w}, b = ${b}`)
         }
         console.log('----------------------------')
-        console.log(`w = ${this._w}, b = ${this._b}`)
+        console.log(`w = ${w}, b = ${b}`)
     }
 }
 
